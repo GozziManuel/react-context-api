@@ -8,27 +8,10 @@ export default function DetailedProductPage() {
   const { id } = useParams();
 
   //   STATE
-  const [detailedProduct, SetdetailedProduct] = useState([]);
+  const [detailedProduct, SetDetailedProduct] = useState([]);
 
   //   Navigate FUNCTION
   const navigate = useNavigate();
-
-  // Buttons
-  //   Prev BUTTON
-  const [prevButton, SetPrevbutton] = useState(parseInt(id));
-  const PrevnavigateButton = () => {
-    SetPrevbutton(prevButton - 1);
-    navigate(`/ProductPage/${prevButton - 1}`);
-    navigate(0);
-  };
-
-  // NextButton
-  const [NextButton, SetNextbutton] = useState(parseInt(id));
-  const NextnavigateButton = () => {
-    SetNextbutton(NextButton + 1);
-    navigate(`/ProductPage/${NextButton + 1}`);
-    navigate(0);
-  };
 
   //   GettingAPI
   const GetIdProduct = () => {
@@ -41,7 +24,7 @@ export default function DetailedProductPage() {
           throw new Error("ProductNotFound");
         }
 
-        SetdetailedProduct(res.data);
+        SetDetailedProduct(res.data);
       })
       .catch((error) => {
         if (
@@ -61,16 +44,6 @@ export default function DetailedProductPage() {
       <h1>{detailedProduct.title}</h1>
       <img src={detailedProduct.image} alt={detailedProduct.title} />
       <p>{detailedProduct.description}</p>
-      <button
-        className="btn btn-primary"
-        onClick={PrevnavigateButton}
-        disabled={detailedProduct.id > 1 ? false : true}
-      >
-        Indietro
-      </button>
-      <button className="btn btn-primary" onClick={NextnavigateButton}>
-        Avanti
-      </button>
     </>
   );
 }

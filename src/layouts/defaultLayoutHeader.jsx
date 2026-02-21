@@ -11,7 +11,10 @@ export default function Header() {
           <NavLink className="navbar-brand" to="/">
             Home
           </NavLink>
-          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <div
+            className="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarNavDropdown"
+          >
             <ul className="navbar-nav">
               <li className="nav-item">
                 <NavLink className="nav-link" to="/ProductPage">
@@ -24,6 +27,21 @@ export default function Header() {
                 </NavLink>
               </li>
             </ul>
+            <div class="form-check form-switch">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="switchCheckDefault"
+                //
+                checked={CheckValue.public}
+                onChange={FormCheck}
+                name="public"
+              />
+              <label class="form-check-label" for="switchCheckDefault">
+                Budget Mode
+              </label>
+            </div>
           </div>
         </div>
       </nav>
