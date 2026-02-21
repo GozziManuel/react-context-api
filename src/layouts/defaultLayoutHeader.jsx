@@ -29,9 +29,9 @@ export default function Header() {
                 </NavLink>
               </li>
             </ul>
-            <div class="form-check form-switch">
+            <div className="form-check form-switch checkbox">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 role="switch"
                 id="switchCheckDefault"
@@ -40,7 +40,7 @@ export default function Header() {
                 onChange={FormCheck}
                 name="public"
               />
-              <label class="form-check-label" for="switchCheckDefault">
+              <label className="form-check-label" for="switchCheckDefault">
                 Budget Mode
               </label>
             </div>

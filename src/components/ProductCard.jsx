@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { UseBudget } from "../context/budgetContext";
 
 export default function ProductCard() {
+  const { CheckValue } = UseBudget();
+  console.log(CheckValue.public);
+
   const [products, setProducts] = useState([]);
   const apiGetProducts = () => {
     axios.get("https://fakestoreapi.com/products").then((res) => {
@@ -11,6 +15,16 @@ export default function ProductCard() {
     });
   };
   useEffect(apiGetProducts, []);
+  const FilterExpensive = () => {
+    if (CheckValue.public === true) {
+      const filteredProducts = products.filter((element) => element.price < 30);
+      setProducts(filteredProducts);
+    }
+  };
+  useEffect(FilterExpensive, []);
+
+  console.log(products);
+
   return (
     <>
       {products.map((element) => (
