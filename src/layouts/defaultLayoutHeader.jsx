@@ -1,6 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
-
+import { UseBudget } from "../context/budgetContext";
 export default function Header() {
+  const { FormCheck, CheckValue } = UseBudget();
+
   return (
     <>
       <nav
