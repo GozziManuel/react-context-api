@@ -3,6 +3,8 @@ import { createContext, useContext, useState } from "react";
 const BudgetContext = createContext();
 
 function BudgetProvider({ children }) {
+  // const [BudgetMode, setBudgetMode] = useState([1, 23, 4, 1, 3]);
+
   const [CheckValue, setCheckValue] = useState({
     public: false,
   });
@@ -12,7 +14,14 @@ function BudgetProvider({ children }) {
     const { name, checked } = e.target;
     setCheckValue({ ...CheckValue, [name]: checked });
   };
-  const ContextValue = { FormCheck, CheckValue, setCheckValue };
+
+  // Export List
+  const ContextValue = {
+    FormCheck,
+    CheckValue,
+    setCheckValue,
+  };
+
   return (
     <BudgetContext.Provider value={ContextValue}>
       {children}
